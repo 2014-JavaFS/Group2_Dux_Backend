@@ -17,7 +17,7 @@ public class Duck {
     }
 
     public enum DuckCondition {
-        MINT, NEARMINT, LP, HP, DAMAGED
+        MINT, NM, LP, HP, DMG
     }
 
     public Duck() {
