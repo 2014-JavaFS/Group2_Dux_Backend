@@ -1,61 +1,46 @@
 package com.revature.dux.Order;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.revature.dux.Duck.Duck;
 import com.revature.dux.User.User;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Reference;
 
 import java.time.OffsetDateTime;
 
+// Lombok
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+// JPA
+@Entity
+@Table(name="orders")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
-    private User buyer;
-    private User seller;
-    private Duck duck;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    @Column(nullable = false)
+    private int buyer;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private int seller;
+    @ManyToOne
+    @JoinColumn(name = "duckId")
+    @Column(nullable = false)
+    private int duck;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private OffsetDateTime orderDate;
     private OrderStatus status;
+    @Column(nullable = false, columnDefinition = "default '1'")
     private short quantity;
 
     public enum OrderStatus {
         CART, PROCESSING, COMPLETE
     }
 
-    public Order() {
-    }
-
-    public Order(int orderId, User buyer, User seller, Duck duck, OffsetDateTime orderDate, OrderStatus status, short quantity) {
-        this.orderId = orderId;
-        this.buyer = buyer;
-        this.seller = seller;
-        this.duck = duck;
-        this.orderDate = orderDate;
-        this.status = status;
-        this.quantity = quantity;
-    }
-
-    public int getOrderId() { return this.orderId; }
-
-    public void setOrderId(int orderId) { this.orderId = orderId; }
-
-    public User getBuyer() { return this.buyer; }
-
-    public void setBuyer(User buyer) { this.buyer = buyer; }
-
-    public User getSeller() { return this.seller; }
-
-    public void setSeller(User seller) { this.seller = seller; }
-
-    public Duck getDuck() { return this.duck; }
-
-    public void setDuck(Duck duck) { this.duck = duck; }
-
-    public OffsetDateTime getOrderDate() { return this.orderDate; }
-
-    public void setOrderDate(OffsetDateTime orderDate) { this.orderDate = orderDate; }
-
-    public OrderStatus getStatus() { return this.status; }
-
-    public void setStatus(OrderStatus status) { this.status = status; }
-
-    public short getQuantity() { return this.quantity; }
-
-    public void setQuantity(short quantity) { this.quantity = quantity; }
 }
