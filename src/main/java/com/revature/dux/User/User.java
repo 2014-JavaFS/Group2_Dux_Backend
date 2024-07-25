@@ -1,17 +1,28 @@
 package com.revature.dux.User;
 
-//import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.OffsetDateTime;
 
+// Lombok
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+// JPA
 public class User {
     private int userId;
     private String username;
     private String email;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private OffsetDateTime registrationDate;
 
-    public User() {
+    /* public User() {
     }
 
     public User(int userId, String username, String email, String password, OffsetDateTime registrationDate) {
@@ -43,4 +54,5 @@ public class User {
     public OffsetDateTime getRegistrationDate() { return this.registrationDate; }
 
     public void setRegistrationDate(OffsetDateTime registrationDate) { this.registrationDate = registrationDate; }
+*/
 }
