@@ -1,3 +1,62 @@
+7/25
+
+Standup Notes (taken by: Ryan):
+
+Callie was absent from daily standup
+
+Group Tasks :
+- Initialize project and begin completing Sprint backlog
+- Persist data in database
+- Begin integrating Spring Data
+
+Individual Tasks :
+- Callie Williams : Login
+- Luis Cruz : Register
+- Ryan Heron : User Profile
+- David Jeske : Display Produckts
+- Ethan Vrooman : Cart
+
+What work have you completed?
+- Spring Boot project has been setup.
+- RDBS has been setup & login info distributed.
+- User stories completed & documentation updated.
+- Refactored standup notes as pushdown
+
+What work do you plan to complete?
+- Persist data into the database
+- Start Spring Data integration
+- Begin working on Sprint backlog
+
+What roadblocks are you facing?
+- Nada. Just Waddling along.
+
+--------------------------------------
+
+7/24
+
+Standup Notes (taken by: Ethan):
+
+Group Tasks :
+- Add user stories to general documentation
+
+Individual Tasks :
+- David Jeske : Setup AWS RDS
+- Ryan Heron : Setup Spring Boot project
+
+What work have you completed?
+- We completed, submitted, received feedback and finisihed our ERD.
+- We found a pretty specduckular background for our trello board.
+- Added Stretch Goal to produckt backlog (Auction functionality).
+
+What work do you plan to complete?
+- Getting the Repo project setup with Spring Boot.
+- Setting up the AWS Database and distributing the login info.
+
+What roadblocks are you facing?
+- No roadblocks yet. Big Vibing. Just Waddling along.
+
+--------------------------------------
+
 7/23
 
 Standup Notes (taken by: Callie):
@@ -22,31 +81,4 @@ What work do you plan to complete?
 By the end of the day (or within the next few days?) we would like to agree upon an ERD.  
 
 What roadblocks are you facing?  
-None, currently. Vibes are good. 
-
---------------------------------------
-
-7/24
-
-Standup Notes (taken by: Ethan): 
-
-Group Tasks : 
-- Add user stories to general documentation
-
-Individual Tasks :
-- David Jeske : Setup AWS RDS
-- Ryan Heron : Setup Spring Boot project
-
-What work have you completed?
-- We completed, submitted, received feedback and finisihed our ERD.
-- We found a pretty specduckular background for our trello board.
-- Added Stretch Goal to produckt backlog (Auction functionality).
-  
-What work do you plan to complete?
-- Getting the Repo project setup with Spring Boot.
-- Setting up the AWS Database and distributing the login info.
-
-What roadblocks are you facing?
-- No roadblocks yet. Big Vibing. Just Waddling along.
-
---------------------------------------
+None, currently. Vibes are good.
