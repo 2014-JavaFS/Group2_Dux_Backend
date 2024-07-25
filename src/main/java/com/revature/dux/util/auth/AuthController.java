@@ -27,12 +27,11 @@ public class AuthController  {
     }
 
     @PostMapping
-    private ResponseEntity<Void> postLogin(@RequestParam String email, @RequestParam String password) throws AuthenticationException {
-//        User user = authService.login(email, password);
-//        return ResponseEntity.noContent()
-//                .header("userId", String.valueOf(user.getUserId()))
-//                .build();
-        return null;
+    private ResponseEntity<Void> postLogin(@RequestParam String email, @RequestParam String password) throws AuthenticationException, javax.security.sasl.AuthenticationException {
+        User user = authService.login(email, password);
+        return ResponseEntity.noContent()
+                .header("userId", String.valueOf(user.getUserId()))
+                .build();
     }
 
     @ExceptionHandler(AuthenticationException.class)

@@ -1,6 +1,7 @@
 package com.revature.dux.util.auth;
 
 import com.revature.dux.User.User;
+import com.revature.dux.User.UserService;
 import org.springframework.stereotype.Service;
 //import com.revature.dux.User.UserService;
 import javax.security.sasl.AuthenticationException;
@@ -13,15 +14,15 @@ import javax.security.sasl.AuthenticationException;
  */
 @Service
 public class AuthService {
-//    private final UserService userService; // Assuming a MemberService instance
-//
-//    public AuthService(UserService userService) {
-//        this.userService = userService;
-//    }
-//
-//    public User login(String email, String password) throws AuthenticationException {
-//        User user = userService.findByEmailAndPassword(email, password);
-//        if(user == null) throw new AuthenticationException("Invalid member credentials, please try again");
-//        return user;
-//    }
+    private final UserService userService; // Assuming a MemberService instance
+
+    public AuthService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public User login(String email, String password) throws AuthenticationException {
+        User user = userService.findByEmailAndPassword(email, password);
+        if(user == null) throw new AuthenticationException("Invalid member credentials, please try again");
+        return user;
+    }
 }
