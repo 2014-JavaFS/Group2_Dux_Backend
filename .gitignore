@@ -70,3 +70,5 @@ build/
 .DS_Store
 
 ### Project Specific ###
+target/
+src/main/resources/application.properties
