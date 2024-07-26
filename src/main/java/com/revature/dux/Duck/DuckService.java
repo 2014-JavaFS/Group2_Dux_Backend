@@ -40,7 +40,7 @@ public class DuckService implements Serviceable<Duck> {
         return true;
     }
 
-    public boolean delete(Duck dyingDuck) {
+    public Boolean delete(Duck dyingDuck) {
         duckRepository.delete(dyingDuck);
         return true;
     }

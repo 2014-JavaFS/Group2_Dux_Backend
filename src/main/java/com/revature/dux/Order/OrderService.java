@@ -28,4 +28,14 @@ public class OrderService implements Serviceable<Order>{
     public Order findById(int number) {
         return null;
     }
+
+    @Override
+    public Boolean update(Order updatedObject) {
+        return false;
+    }
+
+    @Override
+    public Boolean delete(Order deletedObject) {
+        return false;
+    }
 }
