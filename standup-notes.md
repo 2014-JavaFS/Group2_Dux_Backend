@@ -1,3 +1,31 @@
+7/26
+
+Standup Notes (taken by: David):
+
+Callie was absent from daily standup
+
+Group Tasks:
+- Research/Learn more about application.yaml properties
+- Outline some test suites
+- Lookover/check annotations
+
+Individual Tasks:
+- David : write out basic dispatcher servlet
+- Ryan : finish user profile
+
+What have you completed?
+- base project structure of components, controllers, services, repository
+- duck package filled out with basics 
+
+What do you plan to complete?
+- Get project launchable
+- Finish component packages
+
+What roadblocks are you facing?
+- Zilch. Just Waddling along.
+
+--------------------------------------
+
 7/25
 
 Standup Notes (taken by: Ryan):
