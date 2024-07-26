@@ -1,5 +1,6 @@
 package com.revature.dux.Duck;
 
+import com.revature.dux.util.exceptions.DataNotFoundException;
 import com.revature.dux.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,28 +18,30 @@ public class DuckService implements Serviceable<Duck> {
 
     @Override
     public List<Duck> findAll() {
-        return List.of();
+        return duckRepository.findAll();
     }
 
     @Override
-    public Duck create(Duck newObject) {
-        return null;
-    }
-
-    @Override
-    public Duck findById(int number) {
-        return null;
+    public Duck findById(int id) {
+        return duckRepository.findById(id).orElseThrow(() -> new DataNotFoundException("no duck with that id"));
     }
 
     public Duck findByName(String name) {
-        return null;
+        return duckRepository.findByName(name).orElseThrow(() -> new DataNotFoundException("no duck with that name"));
+    }
+
+    @Override
+    public Duck create(Duck newDuck) {
+        return duckRepository.save(newDuck);
     }
 
     public Boolean update(Duck updateDuck) {
-        return false;
+        duckRepository.save(updateDuck);
+        return true;
     }
 
-    public void delete(Duck duck) {
-
+    public boolean delete(Duck dyingDuck) {
+        duckRepository.delete(dyingDuck);
+        return true;
     }
 }
