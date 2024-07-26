@@ -23,20 +23,20 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(referencedColumnName = "userId")
     @Column(nullable = false)
     private int buyer;
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(referencedColumnName = "userId")
     private int seller;
     @ManyToOne
-    @JoinColumn(name = "duckId")
+    @JoinColumn(referencedColumnName = "duckId")
     @Column(nullable = false)
     private int duck;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private OffsetDateTime orderDate;
     private OrderStatus status;
-    @Column(nullable = false, columnDefinition = "default '1'")
+    @Column(nullable = false, columnDefinition = "smallint default 1") // define constraints
     private short quantity;
 
     public enum OrderStatus {
