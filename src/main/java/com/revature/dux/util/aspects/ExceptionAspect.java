@@ -1,6 +1,7 @@
 package com.revature.dux.util.aspects;
 
 import com.revature.dux.util.exceptions.DataNotFoundException;
+import com.revature.dux.util.exceptions.DuckNotFoundException;
 import com.revature.dux.util.exceptions.InvalidInputException;
 import com.revature.dux.util.exceptions.UnauthorizedException;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,12 @@ public class ExceptionAspect {
     @ExceptionHandler(DataNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND) // 404 status code
     public String dataNotFound(DataNotFoundException dnf){
+        return dnf.getMessage();
+    }
+
+    @ExceptionHandler(DuckNotFoundException.class)
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT) // 418 status code
+    public String duckNotFound(DuckNotFoundException dnf){
         return dnf.getMessage();
     }
 
