@@ -28,7 +28,7 @@ public class UserService implements Serviceable<User> {
         return userRepository.save(newUser);
     }
 
-    public boolean delete(User removedUser) {
+    public Boolean delete(User removedUser) {
         userRepository.delete(removedUser);
         return true;
     }
@@ -37,7 +37,7 @@ public class UserService implements Serviceable<User> {
         return userRepository.findByEmailAndPassword(email, password).orElseThrow(() -> new AuthenticationException("Invalid credentials provided."));
     }
 
-    public boolean update(User updatedUser) {
+    public Boolean update(User updatedUser) {
         userRepository.save(updatedUser);
         return true;
     }

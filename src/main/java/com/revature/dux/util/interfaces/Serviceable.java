@@ -6,5 +6,6 @@ public interface Serviceable<O> {
     List<O> findAll();
     O create(O newObject);
     O findById(int id);
-    //add update & delete here and just delete crudable?
+    Boolean update(O updatedObject);
+    Boolean delete(O deletedObject);
 }
