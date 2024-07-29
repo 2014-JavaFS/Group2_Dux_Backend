@@ -15,6 +15,11 @@ spring:
     jpa:
       properties:
         hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+      show-sql: true
+  server:
+    port: 8080
 management:
   endpoints:
     web:
@@ -42,4 +47,7 @@ spring:
           ddl-auto: update
         show-sql: true
   server:
-    port: 3825
+    port: 8080
+
+server:
+  port: 8080

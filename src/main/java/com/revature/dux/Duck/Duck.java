@@ -18,9 +18,11 @@ public class Duck {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int duckId;
 
-    private String duckName;
+    private String name;
     private String description;
-    private short year;
+
+    /*@Column(name="release_year", columnDefinition = "smallint", nullable = false)
+    private short release_year;*/
 
     @Column(name="rarity", columnDefinition = "varchar(9) default 'COMMON'", nullable = false)
     @Enumerated(EnumType.STRING)
