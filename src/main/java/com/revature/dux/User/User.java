@@ -29,5 +29,5 @@ public class User {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private OffsetDateTime registrationDate;
 
-
+  //firetrucks are red because theyre always RUSSIAN around
 }
