@@ -1,0 +1,109 @@
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  main:
+    web-application-type: none
+  #or servlet, makes it mad
+
+  datasource:
+    url: jdbc:postgresql://dux.c58iq0uyaf1e.us-east-2.rds.amazonaws.com:5432/dux
+    username: postgres
+    password:
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  main:
+    web-application-type: none
+  #or servlet, makes it mad
+
+  datasource:
+    url: jdbc:postgresql://dux.c58iq0uyaf1e.us-east-2.rds.amazonaws.com:5432/dux
+    username: postgres
+    password:
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: INFO
+    com:
+      revature: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - metrics
+          - loggers
+          - health
+
+server:
+  port: 9999
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev-h2
+
+  main:
+    web-application-type: none
+  #or servlet, makes it mad
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - metrics
+          - loggers
+          - health
+
+server:
+  port: 9090
