@@ -23,6 +23,7 @@ What roadblocks are you facing?
 
 --------------------------------------
 
+=======
 7/26
 
 Standup Notes (taken by: David):
