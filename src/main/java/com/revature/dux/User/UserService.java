@@ -37,6 +37,10 @@ public class UserService implements Serviceable<User> {
         return userRepository.findByEmailAndPassword(email, password).orElseThrow(() -> new AuthenticationException("Invalid credentials provided."));
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
     public Boolean update(User updatedUser) {
         userRepository.save(updatedUser);
         return true;
