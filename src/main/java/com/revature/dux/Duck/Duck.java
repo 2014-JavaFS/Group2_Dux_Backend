@@ -1,15 +1,38 @@
 package com.revature.dux.Duck;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 
-public class Duck {
+@Data //getters & setters
+@NoArgsConstructor
+@AllArgsConstructor
 
+@Entity
+@Table(name="ducks")
+public class Duck {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int duckId;
-    private String duckName;
+
+    private String name;
     private String description;
+
+    /*@Column(name="release_year", columnDefinition = "smallint", nullable = false)
+    private short release_year;*/
+
+    @Column(name="rarity", columnDefinition = "varchar(9) default 'COMMON'", nullable = false)
+    @Enumerated(EnumType.STRING)
     private DuckRarity rarity;
-    private short year;
+
+    @Column(name="condition", columnDefinition = "varchar(4) default 'NM'", nullable = false)
+    @Enumerated(EnumType.STRING)
     private DuckCondition condition;
+
+    @Column(name = "price", precision=9, scale=2)
     private BigDecimal price;
 
     public enum DuckRarity {
@@ -19,45 +42,4 @@ public class Duck {
     public enum DuckCondition {
         MINT, NM, LP, HP, DMG
     }
-
-    public Duck() {
-    }
-
-    public Duck(int duckId, String duckName, String description, DuckRarity rarity, short year, DuckCondition condition, BigDecimal price) {
-        this.duckId = duckId;
-        this.duckName = duckName;
-        this.description = description;
-        this.rarity = rarity;
-        this.year = year;
-        this.condition = condition;
-        this.price = price;
-    }
-
-    public int getDuckId() { return this.duckId; }
-
-    public void setDuckId(int duckId) { this.duckId = duckId; }
-
-    public String getDuckName() { return this.duckName; }
-
-    public void setDuckName(String duckName) { this.duckName = duckName; }
-
-    public String getDescription() { return this.description; }
-
-    public void setDescription(String description) { this.description = description; }
-
-    public DuckRarity getRarity() { return this.rarity; }
-
-    public void setRarity(String rarity) { this.rarity = DuckRarity.valueOf(rarity); }
-
-    public short getYear() { return this.year; }
-
-    public void setYear(short year) { this.year = year; }
-
-    public DuckCondition getCondition() { return this.condition; }
-
-    public void setCondition(String condition) { this.condition = DuckCondition.valueOf(condition); }
-
-    public BigDecimal getPrice() { return this.price; }
-
-    public void setPrice(BigDecimal price) { this.price = price; }
 }
