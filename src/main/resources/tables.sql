@@ -11,9 +11,9 @@ create type condition_enum as enum ('MINT', 'NM', 'LP', 'HP', 'DMG');
 
 create table ducks(
 	duck_id serial primary key,
-	duck_name varchar(20) not null,
+	name varchar(20) not null,
 	description varchar(100),
-	release_year smallint not null,
+	-- release_year smallint not null,
 	rarity rarity_enum not null default 'COMMON',
 	condition condition_enum not null default 'NM',
 	price decimal(9, 2) not null

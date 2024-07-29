@@ -23,16 +23,14 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "userId")
-    @Column(nullable = false)
-    private int buyer;
+    @JoinColumn(referencedColumnName = "userId", nullable = false)
+    private User buyer;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "userId")
-    private int seller;
+    @JoinColumn(referencedColumnName = "userId", nullable = false)
+    private User seller;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "duckId")
-    @Column(nullable = false)
-    private int duck;
+    @JoinColumn(referencedColumnName = "duckId", nullable = false)
+    private Duck duck;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
     private OffsetDateTime orderDate;
     private OrderStatus status;
