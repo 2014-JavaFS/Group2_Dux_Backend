@@ -25,11 +25,11 @@ public class DuckController {
 
     @GetMapping("/{id}")
     private ResponseEntity<Duck> findDuckById(@PathVariable int id) {
-        return null;
+        return ResponseEntity.ok().body(duckService.findById(id));
     }
 
-    @GetMapping("/{name}")
-    private ResponseEntity<Duck> findDuckByName(@PathVariable String name) {
+    @GetMapping("/name")
+    private ResponseEntity<Duck> findDuckByName(@RequestParam String name) {
         return ResponseEntity.ok().body(duckService.findByName(name));
     }
 
