@@ -9,8 +9,8 @@ spring:
       on-profile: dev
     datasource:
       url: jdbc:postgresql://dux.c58iq0uyaf1e.us-east-2.rds.amazonaws.com:5432/postgres
-      username: postgres
-      password: DUX4lyfe!
+      username:
+      password:
       driver-class-name: org.postgresql.Driver
     jpa:
       properties:

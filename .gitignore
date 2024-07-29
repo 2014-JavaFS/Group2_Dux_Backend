@@ -72,3 +72,4 @@ build/
 ### Project Specific ###
 target/
 src/main/resources/application.properties
+src/main/resources/application.yaml
