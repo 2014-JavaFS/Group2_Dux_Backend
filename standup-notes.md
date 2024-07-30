@@ -1,3 +1,26 @@
+7/30
+Standup Notes (taken by: Callie):
+
+Group Tasks:
+- Discussions of Front End Work
+- Continued work on backend
+- Planning out aesthetics/ front end design
+
+Individual tasks:
+- David: Endpoint work
+
+What have you completed? 
+- We now have the application launched.
+
+What do you plan to complete?
+- Figure out cart
+- Finish up work on backend
+- Start planning frontend putting together models
+
+What roadblocks are you facing?
+Not currently, we seem to be ahead atm. 
+
+-------------------------------------
 7/29
 
 Standup Notes (taken by: Luis):
@@ -136,3 +159,5 @@ By the end of the day (or within the next few days?) we would like to agree upon
 
 What roadblocks are you facing?  
 None, currently. Vibes are good.
+
+
