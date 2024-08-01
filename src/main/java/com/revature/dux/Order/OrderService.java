@@ -1,5 +1,6 @@
 package com.revature.dux.Order;
 
+import com.revature.dux.util.exceptions.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.revature.dux.util.interfaces.Serviceable;
@@ -16,26 +17,32 @@ public class OrderService implements Serviceable<Order>{
     }
     @Override
     public List<Order> findAll() {
-        return List.of();
+        return orderRepository.findAll();
     }
 
     @Override
-    public Order create(Order newObject) {
-        return null;
+    public Order create(Order newOrder) {
+        return orderRepository.save(newOrder);
     }
 
     @Override
     public Order findById(int number) {
-        return null;
+        return orderRepository.findById(number).orElseThrow(() -> new DataNotFoundException("no order with that id"));
     }
 
     @Override
     public Boolean update(Order updatedObject) {
-        return false;
+        orderRepository.save(updatedObject);
+        return true;
     }
-
     @Override
     public Boolean delete(Order deletedObject) {
-        return false;
+        orderRepository.delete(deletedObject);
+        return true;
+    }
+    public Order removeOrderFromCartByID(int id){
+        Order orderToUpdate = findById(id);
+        orderToUpdate.setStatus(Order.OrderStatus.DELETED);
+        return orderToUpdate;
     }
 }

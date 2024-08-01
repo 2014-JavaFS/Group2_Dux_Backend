@@ -28,7 +28,7 @@ public class OrderController {
     private ResponseEntity<Order> postNewOrder(@RequestBody Order newOrder) {
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.create(newOrder));
     }
-    //Used to see the cart of the current user
+    //Used to see the cart of the current user, this is probably why we wanted a cart controller in the first place
     @GetMapping({"userID"})
     private ResponseEntity<List<Order>> findAllOrdersForUser(@PathVariable int userID) {// also not sure if this is the input param we want
         return ResponseEntity.ok().body(orderService.findAllByUser(userID)); // -> This needs to be implemented in OrderService as well
