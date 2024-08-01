@@ -43,6 +43,7 @@ public class OrderService implements Serviceable<Order>{
     public Order removeOrderFromCartByID(int id){
         Order orderToUpdate = findById(id);
         orderToUpdate.setStatus(Order.OrderStatus.DELETED);
+        orderRepository.save(orderToUpdate);
         return orderToUpdate;
     }
 }
