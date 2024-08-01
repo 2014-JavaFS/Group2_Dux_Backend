@@ -1,7 +1,5 @@
 package com.revature.dux.Order;
 
-import com.revature.dux.Duck.Duck;
-import com.revature.dux.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +17,28 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    //this one still kind broken
+    @PostMapping
+    private ResponseEntity<Order> postNewOrder(@RequestBody Order newOrder) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.create(newOrder));
+    }
+
+    @GetMapping
+    private ResponseEntity<List<Order>> findAllDucks() {
+        return ResponseEntity.ok().body(orderService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    private ResponseEntity<Order> findDuckById(@PathVariable int id) {
+        return ResponseEntity.ok().body(orderService.findById(id));
+    }
+
+
+    /*
+    TODO CART Endpoints and planning : Ethan - member of the High Mallard Council
+    -  might need to add a deleted status to order status?
+
+>>>>>>> 0cc412141140cfbf2d6c4a794b00eafa2d36f375
     // when creating an order probably need to default their status to in a cart right?
     @PostMapping
     private ResponseEntity<Order> postNewOrder(@RequestBody Order newOrder) {
