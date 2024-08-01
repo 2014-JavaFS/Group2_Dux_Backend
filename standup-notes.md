@@ -1,3 +1,29 @@
+8/1
+Standup Notes (taken by: Ryan):
+
+Group Tasks:
+- Delay front end discussions until React
+- Documentation
+- Endpoint planning
+
+Individual Tasks:
+- Ryan: Testing
+- David: Checkout
+- Ethan: Cart endpoints
+- Callie: Frontend planning
+- Luis: Coconut
+
+What have you completed?
+- Nothing!
+
+What do you plan to complete?
+- Endpoint planning
+
+What roadblocks are you facing?
+- Teach us React you cowards
+
+-------------------------------------
+
 7/30
 Standup Notes (taken by: Callie):
 
