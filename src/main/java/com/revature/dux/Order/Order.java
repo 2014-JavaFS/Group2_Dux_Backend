@@ -38,7 +38,7 @@ public class Order {
     private short quantity;
 
     public enum OrderStatus {
-        CART, PROCESSING, COMPLETE, DELETED
+        CART, PROCESSING, COMPLETE
     }
 
 }

@@ -40,10 +40,10 @@ public class OrderService implements Serviceable<Order>{
         orderRepository.delete(deletedObject);
         return true;
     }
-    public Order removeOrderFromCartByID(int id){
+    //will need to add validation to most of these methods
+    public Boolean removeOrderFromCartByID(int id){
         Order orderToUpdate = findById(id);
-        orderToUpdate.setStatus(Order.OrderStatus.DELETED);
-        orderRepository.save(orderToUpdate);
-        return orderToUpdate;
+        orderRepository.delete(orderToUpdate);
+        return true;
     }
 }
