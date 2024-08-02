@@ -1,3 +1,34 @@
+
+8/2
+Standup Notes (taken by: Ethan):
+
+Group Tasks:
+- Delay front end discussion until monday and David of the High Mallard Council returns
+- Finishing Up Endpoints
+- Documentation
+
+Individual Tasks:
+- Ryan: Testing
+- David: Checkout (progress made, need to finalize/test)
+- Ethan: Cart endpoints (just need to finalize/test them)
+- Callie: Frontend planning (research and outlining done)
+- Luis: Coconut (big progress)
+
+What have you completed?
+- A lot of work within the Order layer for Card/Checkout has been made
+- Much Frontend planning and research has been done
+
+What do you plan to complete?
+- Start testing suite
+- Start Frontend development
+- Finishing backend for cart/checkout
+- Finish All Endpoint Planning
+
+What roadblocks are you facing?
+- Finish Teaching us React you cowards
+- David is MIA
+
+-------------------------------------
 8/1
 Standup Notes (taken by: Ryan):
 
@@ -9,7 +40,7 @@ Group Tasks:
 Individual Tasks:
 - Ryan: Testing
 - David: Checkout
-- Ethan: Cart endpoints
+- Ethan: Cart endpoints 
 - Callie: Frontend planning
 - Luis: Coconut
 
