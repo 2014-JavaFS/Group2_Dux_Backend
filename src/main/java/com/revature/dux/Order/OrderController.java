@@ -34,6 +34,8 @@ public class OrderController {
         return ResponseEntity.ok().body(orderService.findById(id));
     }
 
+    // I do need to change this to a @RequestHeader and grab the user Id that is logged in
+    // but we do not have that functionality yet so I am putting this in for testing purposes
     @GetMapping("/getbyUser/{userId}")
     private ResponseEntity<List<Order>> findAllOrdersForUser(@PathVariable int userId) {
         return ResponseEntity.ok().body(orderService.findAllByUser(userId)); // -> This needs to be implemented in OrderService as well
