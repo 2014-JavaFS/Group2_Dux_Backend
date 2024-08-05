@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:5174")
 @RestController
 @RequestMapping("/users")
 public class UserController {

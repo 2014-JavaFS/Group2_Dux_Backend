@@ -1,6 +1,5 @@
 package com.revature.dux.Order;
 
-import com.revature.dux.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5174")
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
