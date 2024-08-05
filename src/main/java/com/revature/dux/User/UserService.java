@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.security.sasl.AuthenticationException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService implements Serviceable<User> {
@@ -17,7 +16,7 @@ public class UserService implements Serviceable<User> {
     public UserService(UserRepository userRepository) { this.userRepository = userRepository; }
 
     @Override
-    public List<User> findAll() { return null; }
+    public List<User> findAll() { return userRepository.findAll(); }
 
     @Override
     public User findById(int userId) {
@@ -38,8 +37,8 @@ public class UserService implements Serviceable<User> {
         return userRepository.findByEmailAndPassword(email, password).orElseThrow(() -> new AuthenticationException("Invalid credentials provided."));
     }
 
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(()-> new DataNotFoundException("no user with that username found"));
     }
 
     public Boolean update(User updatedUser) {

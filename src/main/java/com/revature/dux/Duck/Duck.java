@@ -43,3 +43,4 @@ public class Duck {
         MINT, NM, LP, HP, DMG
     }
 }
+//🦆
