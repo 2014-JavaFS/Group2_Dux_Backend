@@ -1,4 +1,27 @@
+8/3
+Standup Notes (taken by: David):
 
+Group Tasks:
+- Begin Front End
+
+Individual Tasks:
+- Callie: Login
+- David: Checkout
+- Ryan: Testing
+- Ehtan: Research Third Party APIs
+- Luis: Product Display
+
+What have you completed?
+- Cart functioning
+
+What do you plan to complete?
+- Checkout Endpoints
+
+What roadblocks are you facing?
+- Hooking Front End to Back End
+- Unsure on specifics of documentation
+
+-------------------------------------
 8/2
 Standup Notes (taken by: Ethan):
 
