@@ -1,5 +1,6 @@
 package com.revature.dux.Order;
 
+import com.revature.dux.User.UserRepository;
 import com.revature.dux.util.exceptions.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,5 +46,10 @@ public class OrderService implements Serviceable<Order>{
         Order orderToUpdate = findById(id);
         orderRepository.delete(orderToUpdate);
         return true;
+    }
+
+    public List<Order> findAllByUser(int userId){
+
+        return orderRepository.findBySeller_UserId(userId).orElseThrow(()-> new DataNotFoundException("This member has no orders or does not exist"));
     }
 }
