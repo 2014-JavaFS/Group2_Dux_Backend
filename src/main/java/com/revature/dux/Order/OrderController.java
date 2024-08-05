@@ -46,11 +46,10 @@ public class OrderController {
     }
 
     @PatchMapping("/checkout")
-    private ResponseEntity<Boolean> patchCheckout(@RequestParam int userId) {
-        if (orderService.checkout(userId)>0) {
-            return ResponseEntity.ok(true);
-        }
-        return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build();
+    private ResponseEntity<String> patchCheckout(@RequestParam int userId) {
+        int rowsUpdated = orderService.checkout(userId);
+        if (rowsUpdated > 0) return ResponseEntity.ok("rows updated: " + rowsUpdated);
+        else return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build();
     }
 
     @DeleteMapping({"/{orderID}"})
