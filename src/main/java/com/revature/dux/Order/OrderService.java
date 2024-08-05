@@ -1,11 +1,11 @@
 package com.revature.dux.Order;
 
-import com.revature.dux.User.UserRepository;
 import com.revature.dux.util.exceptions.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.revature.dux.util.interfaces.Serviceable;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -48,8 +48,15 @@ public class OrderService implements Serviceable<Order>{
         return true;
     }
 
-    public List<Order> findAllByUser(int userId){
+    public List<Order> findAllBySeller(int userId){
+        return orderRepository.findAllBySeller(userId).orElseThrow(()-> new DataNotFoundException("This seller has no orders or does not exist"));
+    }
 
-        return orderRepository.findBySeller_UserId(userId).orElseThrow(()-> new DataNotFoundException("This member has no orders or does not exist"));
+    public List<Order> findAllByBuyer(int userId){
+        return orderRepository.findAllByBuyer(userId).orElseThrow(()-> new DataNotFoundException("This buyer has no orders or does not exist"));
+    }
+
+    public int checkout(int userId) {
+        return orderRepository.checkout(userId, LocalDateTime.now()).orElseThrow(( )-> new DataNotFoundException("Cart empty or failed to checkout"));
     }
 }
