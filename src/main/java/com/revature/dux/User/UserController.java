@@ -8,7 +8,8 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:5174")
+//might have to change depending on port the react app launches with (Vite will tell you the port)
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/users")
 public class UserController {
