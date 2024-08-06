@@ -47,11 +47,21 @@ public class OrderController {
         return ResponseEntity.ok().body(orderService.findAllByBuyer(userId));
     }
 
+    @GetMapping("/cart")
+    private ResponseEntity<List<Order>> getCart(@RequestParam int userId){
+        return ResponseEntity.ok(orderService.getCart(userId));
+    }
+
     @PatchMapping("/checkout")
     private ResponseEntity<String> patchCheckout(@RequestParam int userId) {
         int rowsUpdated = orderService.checkout(userId);
         if (rowsUpdated > 0) return ResponseEntity.ok("rows updated: " + rowsUpdated);
         else return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build();
+    }
+
+    @GetMapping("/history")
+    private ResponseEntity<List<Order>> getHistory(@RequestParam int userId){
+        return ResponseEntity.ok(orderService.getHistory(userId));
     }
 
     @DeleteMapping({"/{orderID}"})
