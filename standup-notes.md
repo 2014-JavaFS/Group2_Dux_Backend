@@ -1,3 +1,30 @@
+8/6
+Standup Notes (taken by: Ryan):
+
+Group Tasks:
+- Front End
+
+Individual Tasks:
+- Ryan: Testing, User Profile
+- Ethan: Cart Frontend
+- Luis: Register Frontend
+- David: Display, Search, Checkout Frontend
+- Callie: Login Frontend, Frontend design
+
+What have you completed?
+- Frontend loads
+
+What do you aim to complete?
+- Frontend modules
+- Refactor frontend code for axios
+- Backend testing
+
+Roadblocks?
+- React is mean and hates us
+- Axios is ???
+- UseEffect() does what??
+
+-------------------------------------
 8/3
 Standup Notes (taken by: David):
 
