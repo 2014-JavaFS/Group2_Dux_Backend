@@ -24,5 +24,11 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Modifying //for updates and deletes
     @Transactional //apparently very important for updates to be properly committed
     @Query("UPDATE Order o SET o.orderDate = :now, o.status = 'PROCESSING' WHERE buyer = (SELECT u FROM User u WHERE userId = :userId) AND status = 'CART'")
-    Optional<Integer> checkout(@Param("userId")int userId, @Param("now") LocalDateTime now);
+    Optional<Integer> checkout(@Param("userId") int userId, @Param("now") LocalDateTime now);
+
+    @Query("SELECT o FROM Order o WHERE buyer.userId = :userId AND status = 'CART'")
+    Optional<List<Order>> findCart(@Param("userId") int userId);
+
+    @Query("SELECT o FROM Order o WHERE buyer.userId = :userId AND NOT status = 'CART'")
+    Optional<List<Order>> findHistory(@Param("userId") int userId);
 }
