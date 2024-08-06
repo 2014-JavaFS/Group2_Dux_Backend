@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import java.util.List;
 import java.util.Optional;
 
+//might have to change depending on port the react app launches with (Vite will tell you the port)
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -20,7 +22,7 @@ public class UserController {
     private ResponseEntity<List<User>> findAllUsers() { return ResponseEntity.ok().body(userService.findAll()); }
 
     @GetMapping("/{username}")
-    private ResponseEntity<Optional<User>> findUserByUsername(@PathVariable String username) {
+    private ResponseEntity<User> findUserByUsername(@PathVariable String username) {
         return ResponseEntity.ok().body(userService.findByUsername(username));
     }
 

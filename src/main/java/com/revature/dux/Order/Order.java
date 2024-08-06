@@ -7,9 +7,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Reference;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 // Lombok
 @Data
@@ -17,23 +17,28 @@ import java.time.OffsetDateTime;
 @AllArgsConstructor
 // JPA
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "userId", nullable = false)
+    @JoinColumn(referencedColumnName = "userId", nullable = false, name = "buyer")
     private User buyer;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "userId", nullable = false)
+    @JoinColumn(referencedColumnName = "userId", nullable = false, name = "seller")
     private User seller;
     @ManyToOne
-    @JoinColumn(referencedColumnName = "duckId", nullable = false)
+    @JoinColumn(referencedColumnName = "duckId", nullable = false, name = "duck")
     private Duck duck;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
-    private OffsetDateTime orderDate;
+
+    @Column(name = "order_date", columnDefinition = "default now()")
+    private LocalDateTime orderDate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "varchar(10) default 'CART'")
     private OrderStatus status;
+
     @Column(nullable = false, columnDefinition = "smallint default 1") // define constraints
     private short quantity;
 
