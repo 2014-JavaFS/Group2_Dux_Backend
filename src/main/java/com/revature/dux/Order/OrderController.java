@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5174")
+//might have to change depending on port the react app launches with (Vite will tell you the port)
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
