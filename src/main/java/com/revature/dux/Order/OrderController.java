@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //might have to change depending on port the react app launches with (Vite will tell you the port)
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(exposedHeaders = {"userId"}, origins = "http://localhost:5173/",allowedHeaders = {"userid"})
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -53,8 +53,10 @@ public class OrderController {
     }
 
     @GetMapping("/cart")
-    private ResponseEntity<List<Order>> getCart(@RequestParam int userId){
-        return ResponseEntity.ok(orderService.getCart(userId));
+    private ResponseEntity<List<Order>> getCart(@RequestHeader("userid") String userString){
+        System.out.println("This is the user id found in the headers"+userString);
+        int userInt = Integer.parseInt(userString);
+        return ResponseEntity.ok(orderService.getCart(userInt));
     }
 
     @PatchMapping("/checkout")

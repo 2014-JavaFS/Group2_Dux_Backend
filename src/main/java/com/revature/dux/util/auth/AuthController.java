@@ -9,6 +9,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.naming.AuthenticationException;
 
+@CrossOrigin(exposedHeaders = {"userId"}, origins = "http://localhost:5173/")
 @RestController
 @RequestMapping("/auth")
 public class AuthController  {
@@ -29,6 +30,7 @@ public class AuthController  {
     @PostMapping
     private ResponseEntity<Void> postLogin(@RequestParam String email, @RequestParam String password) throws AuthenticationException, javax.security.sasl.AuthenticationException {
         User user = authService.login(email, password);
+        System.out.println("User ID that was logged in: "+String.valueOf(user.getUserId()));
         return ResponseEntity.noContent()
                 .header("userId", String.valueOf(user.getUserId()))
                 .build();
