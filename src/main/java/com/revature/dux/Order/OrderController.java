@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //might have to change depending on port the react app launches with (Vite will tell you the port)
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(exposedHeaders = {"userId"}, origins = "http://localhost:5173/",allowedHeaders = {"userid"})
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -23,6 +23,11 @@ public class OrderController {
     @PostMapping
     private ResponseEntity<Order> postNewOrder(@RequestBody Order newOrder) {
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.create(newOrder));
+    }
+
+    @PostMapping("/addToCart")
+    private ResponseEntity<Boolean> postAddToCart(@RequestParam int buyer,@RequestParam int seller,@RequestParam int duck,@RequestParam int quantity) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.generateOrder(buyer, seller, duck, quantity));
     }
 
     @GetMapping
@@ -47,11 +52,22 @@ public class OrderController {
         return ResponseEntity.ok().body(orderService.findAllByBuyer(userId));
     }
 
+    @GetMapping("/cart")
+    private ResponseEntity<List<Order>> getCart(@RequestHeader("userid") String userString){
+        int userInt = Integer.parseInt(userString);
+        return ResponseEntity.ok(orderService.getCart(userInt));
+    }
+
     @PatchMapping("/checkout")
     private ResponseEntity<String> patchCheckout(@RequestParam int userId) {
         int rowsUpdated = orderService.checkout(userId);
         if (rowsUpdated > 0) return ResponseEntity.ok("rows updated: " + rowsUpdated);
         else return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build();
+    }
+
+    @GetMapping("/history")
+    private ResponseEntity<List<Order>> getHistory(@RequestParam int userId){
+        return ResponseEntity.ok(orderService.getHistory(userId));
     }
 
     @DeleteMapping({"/{orderID}"})

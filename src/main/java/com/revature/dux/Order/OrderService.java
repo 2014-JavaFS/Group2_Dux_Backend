@@ -1,6 +1,8 @@
 package com.revature.dux.Order;
 
 import com.revature.dux.util.exceptions.DataNotFoundException;
+import com.revature.dux.util.exceptions.InvalidInputException;
+import com.revature.dux.util.interfaces.Serviceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.revature.dux.util.interfaces.Serviceable;
@@ -58,5 +60,17 @@ public class OrderService implements Serviceable<Order>{
 
     public int checkout(int userId) {
         return orderRepository.checkout(userId, LocalDateTime.now()).orElseThrow(( )-> new DataNotFoundException("Cart empty or failed to checkout"));
+    }
+
+    public List<Order> getCart(int userId) {
+        return orderRepository.findCart(userId).orElseThrow(() -> new DataNotFoundException("Cart empty"));
+    }
+
+    public List<Order> getHistory(int userId) {
+        return orderRepository.findHistory(userId).orElseThrow(() -> new DataNotFoundException("No order history found"));
+    }
+
+    public Boolean generateOrder(int buyer, int seller, int duck, int quantity) {
+        return orderRepository.generateOrder(buyer, seller, duck, quantity).orElseThrow(() -> new InvalidInputException("failed to generate new order"));
     }
 }
