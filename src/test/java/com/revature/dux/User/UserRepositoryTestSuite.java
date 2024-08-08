@@ -7,7 +7,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 @DataJpaTest
 @ActiveProfiles("test")
@@ -19,13 +21,13 @@ public class UserRepositoryTestSuite {
     private UserRepository userRepository;
 
     @Test
-    public void testCreate() {
+    public void testSaveValid() {
         User user = new User();
         user.setUserId(1001);
         user.setUsername("test1");
         user.setEmail("tester1@test.test");
         user.setPassword("test12345");
-        user.setRegistrationDate(OffsetDateTime.now());
+        user.setRegistrationDate(LocalDate.now());
 
         User savedUser = userRepository.save(user);
         Assertions.assertEquals(1001, savedUser.getUserId());
@@ -33,33 +35,34 @@ public class UserRepositoryTestSuite {
     }
 
     @Test
-    public void testFindAll() {
-
+    public void testFindAllNotNull() {
+        List<User> userList = userRepository.findAll();
+        Assertions.assertNotNull(userList);
     }
 
     @Test
-    public void testFindById() {
-
+    public void testFindByIdValid() {
+        Optional<User> user = userRepository.findById(1001);
+        Assertions.assertTrue(user.toString().contains("test1"));
     }
 
     @Test
     public void testFindByUsername() {
-
+        Optional<User> user = userRepository.findByUsername("test1");
+        Assertions.assertTrue(user.toString().contains("1001"));
     }
 
     @Test
     public void testFindByEmailAndPassword() {
-
-    }
-
-    @Test
-    public void testUpdate() {
-
+        Optional<User> user = userRepository.findByEmailAndPassword("tester1@test.test", "test12345");
+        Assertions.assertTrue(user.toString().contains("1001"));
     }
 
     @Test
     public void testDelete() {
-
+        userRepository.deleteById(1001);
+        Optional<User> deletedUser = userRepository.findById(1001);
+        Assertions.assertFalse(deletedUser.isPresent());
     }
 }
 
