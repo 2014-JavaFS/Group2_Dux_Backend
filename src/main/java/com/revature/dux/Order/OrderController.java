@@ -54,7 +54,6 @@ public class OrderController {
 
     @GetMapping("/cart")
     private ResponseEntity<List<Order>> getCart(@RequestHeader("userid") String userString){
-        System.out.println("This is the user id found in the headers"+userString);
         int userInt = Integer.parseInt(userString);
         return ResponseEntity.ok(orderService.getCart(userInt));
     }

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 //might have to change depending on port the react app launches with (Vite will tell you the port)
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(exposedHeaders = {"userId"}, origins = "http://localhost:5173/",allowedHeaders = {"userid"})
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -24,6 +24,11 @@ public class UserController {
     @GetMapping("/{username}")
     private ResponseEntity<User> findUserByUsername(@PathVariable String username) {
         return ResponseEntity.ok().body(userService.findByUsername(username));
+    }
+    @GetMapping("/showProfile")
+    private ResponseEntity<User> findUserById(@RequestHeader("userid") String userString){
+        int userInt = Integer.parseInt(userString);
+        return ResponseEntity.ok().body(userService.findById(userInt));
     }
 
     @PostMapping
