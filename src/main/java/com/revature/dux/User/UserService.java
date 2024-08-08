@@ -25,6 +25,7 @@ public class UserService implements Serviceable<User> {
 
     @Override
     public User create(User newUser) {
+
         return userRepository.save(newUser);
     }
 
@@ -42,6 +43,7 @@ public class UserService implements Serviceable<User> {
     }
 
     public Boolean update(User updatedUser) {
+
         userRepository.save(updatedUser);
         return true;
     }
