@@ -24,6 +24,4 @@ public class DuckControllerIntegrationTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-
 }

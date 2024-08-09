@@ -1,5 +1,6 @@
 package com.revature.dux.User;
 
+import com.revature.dux.util.exceptions.InvalidInputException;
 import com.revature.dux.util.interfaces.Serviceable;
 import com.revature.dux.util.exceptions.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,12 @@ public class UserService implements Serviceable<User> {
 
     @Override
     public User create(User newUser) {
-
-        return userRepository.save(newUser);
+        String rex = "\\w+@\\w+[\\.][com|org|net]{3}";
+        if (!newUser.getEmail().matches(rex)) {
+            throw new InvalidInputException("Invalid email format! Please ensure your email is properly formatted.");
+        } else {
+            return userRepository.save(newUser);
+        }
     }
 
     public Boolean delete(User removedUser) {

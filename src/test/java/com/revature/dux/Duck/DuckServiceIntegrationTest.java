@@ -16,6 +16,4 @@ public class DuckServiceIntegrationTest {
     @InjectMocks
     private DuckService sut;
 
-    @Test
-
 }

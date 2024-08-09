@@ -25,8 +25,8 @@ public class UserRepositoryTestSuite {
         User user = new User();
         user.setUserId(1001);
         user.setUsername("test1");
-        user.setEmail("tester1@test.test");
-        user.setPassword("test12345");
+        user.setEmail("tester1@test.com");
+        user.setPassword("test12345*");
         user.setRegistrationDate(LocalDate.now());
 
         User savedUser = userRepository.save(user);
@@ -47,19 +47,19 @@ public class UserRepositoryTestSuite {
     }
 
     @Test
-    public void testFindByUsername() {
+    public void testFindByUsernameValid() {
         Optional<User> user = userRepository.findByUsername("test1");
         Assertions.assertTrue(user.toString().contains("1001"));
     }
 
     @Test
-    public void testFindByEmailAndPassword() {
-        Optional<User> user = userRepository.findByEmailAndPassword("tester1@test.test", "test12345");
+    public void testFindByEmailAndPasswordValid() {
+        Optional<User> user = userRepository.findByEmailAndPassword("tester1@test.com", "test12345");
         Assertions.assertTrue(user.toString().contains("1001"));
     }
 
     @Test
-    public void testDelete() {
+    public void testDeleteValid() {
         userRepository.deleteById(1001);
         Optional<User> deletedUser = userRepository.findById(1001);
         Assertions.assertFalse(deletedUser.isPresent());

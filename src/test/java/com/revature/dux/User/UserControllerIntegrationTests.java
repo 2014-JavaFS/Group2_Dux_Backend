@@ -24,6 +24,5 @@ public class UserControllerIntegrationTests {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
 
 }

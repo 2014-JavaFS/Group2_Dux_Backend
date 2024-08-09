@@ -15,7 +15,4 @@ public class OrderServiceIntegrationTests {
 
     @InjectMocks
     private OrderService sut;
-
-    @Test
-
 }
